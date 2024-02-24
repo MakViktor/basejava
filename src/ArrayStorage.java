@@ -25,6 +25,10 @@ public class ArrayStorage {
     }
 
     int size() {
-        return 0;
+        int i = 0;
+        while (storage[i] != null) {
+            i++;
+        }
+        return i;
     }
 }
