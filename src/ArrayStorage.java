@@ -22,8 +22,10 @@ public class ArrayStorage {
      */
     Resume[] getAll() {
         Resume[] allResums = new Resume[size()];
-        for (int i = 0; i < allResums.length; i++) {
-            allResums[i] = storage[i];
+        if (size() > 0) {
+            for (int i = 0; i < allResums.length; i++) {
+                allResums[i] = storage[i];
+            }
         }
         return allResums;
     }
