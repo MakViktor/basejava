@@ -6,7 +6,7 @@ public class ArrayStorage {
 
     void clear() {
         if (size() > 0) {
-            for (int i = 0; i < size(); i++) storage[i] = null;
+            for (int i = size() - 1; i >= 0; i--) storage[i] = null;
         }
     }
 
