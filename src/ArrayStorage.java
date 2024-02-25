@@ -11,6 +11,9 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
+        for (Resume res : getAll()) {
+            if (res.uuid.equals(r.uuid)) return;
+        }
         storage[size()] = r;
     }
 
