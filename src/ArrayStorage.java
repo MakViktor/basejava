@@ -27,15 +27,20 @@ public class ArrayStorage {
     }
 
     Resume get(String uuid) {
-        if (size() > 0) {
-            Resume result = new Resume();
-            for (Resume r : getAll()) {
-                if (r.uuid.equals(uuid)) result = r;
-            }
-            return result;
-        } else {
-            return null;
+//        if (size > 0) {
+//            Resume result = new Resume();
+//            for (Resume r : getAll()) {
+//                if (r.uuid.equals(uuid)) result = r;
+//            }
+//            return result;
+//        } else {
+//            return null;
+//        }
+        if (size == 0) return null;
+        for (int i = 0; i < size; i++) {
+            if (storage[i].uuid.equals(uuid)) return storage[i];
         }
+        return null;
     }
 
     void delete(String uuid) {
