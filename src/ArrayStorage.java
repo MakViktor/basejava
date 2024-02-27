@@ -3,6 +3,7 @@
  */
 public class ArrayStorage {
     Resume[] storage = new Resume[10000];
+    int size = 0;
 
     void clear() {
         if (size() > 0) {
@@ -59,10 +60,12 @@ public class ArrayStorage {
     }
 
     int size() {
+/*
         int i = 0;
         while (storage[i] != null) {
             i++;
         }
-        return i;
+*/
+        return size;
     }
 }
