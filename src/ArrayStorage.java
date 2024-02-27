@@ -6,8 +6,11 @@ public class ArrayStorage {
     int size = 0;
 
     void clear() {
-        if (size() > 0) {
-            for (int i = size() - 1; i >= 0; i--) storage[i] = null;
+//        if (size() > 0) {
+//            for (int i = size() - 1; i >= 0; i--) storage[i] = null;
+//        }
+        while (size > 0) {
+            storage[--size] = null;
         }
     }
 
