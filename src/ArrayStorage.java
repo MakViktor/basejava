@@ -15,10 +15,15 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        for (Resume res : getAll()) {
-            if (res.uuid.equals(r.uuid)) return;
+//        for (Resume res : getAll()) {
+//            if (res.uuid.equals(r.uuid)) return;
+//        }
+        if (size > 0) {
+            for (int i = 0; i < size; i++) {
+                if (storage[i].uuid.equals(r.uuid)) return;
+            }
         }
-        storage[size()] = r;
+        storage[size++] = r;
     }
 
     Resume get(String uuid) {
