@@ -30,10 +30,11 @@ public class ArrayStorage {
 
     void delete(String uuid) {
         if (size > 0) {
-            for (int i = 0; i < size(); i++) {
+            for (int i = 0; i < size; i++) {
                 if (storage[i].uuid.equals(uuid)) {
                     storage[i] = storage[--size];
                     storage[size] = null;
+                    break;
                 }
             }
         }
@@ -43,7 +44,7 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     Resume[] getAll() {
-        Resume[] allResume = new Resume[size()];
+        Resume[] allResume = new Resume[size];
         if (size() > 0) {
             for (int i = 0; i < allResume.length; i++) {
                 allResume[i] = storage[i];
