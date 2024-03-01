@@ -12,16 +12,13 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        if (size > 0) {
-            for (int i = 0; i < size; i++) {
-                if (storage[i].uuid.equals(r.uuid)) return;
-            }
+        for (int i = 0; i < size; i++) {
+            if (storage[i].uuid.equals(r.uuid)) return;
         }
         storage[size++] = r;
     }
 
     Resume get(String uuid) {
-        if (size == 0) return null;
         for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) return storage[i];
         }
