@@ -30,13 +30,11 @@ public class ArrayStorage {
     }
 
     public void delete(String uuid) {
-        if (size > 0) {
-            for (int i = 0; i < size; i++) {
-                if (storage[i].getUuid().equals(uuid)) {
-                    storage[i] = storage[--size];
-                    storage[size] = null;
-                    break;
-                }
+        for (int i = 0; i < size; i++) {
+            if (storage[i].getUuid().equals(uuid)) {
+                storage[i] = storage[--size];
+                storage[size] = null;
+                break;
             }
         }
     }
@@ -56,5 +54,16 @@ public class ArrayStorage {
 
     public int size() {
         return size;
+    }
+
+    public void update(Resume r) {
+        for (int i = 0; i < size; i++) {
+            if (storage[i].getUuid().equals(r.getUuid())) {
+                storage[i] = r;
+                return;
+            }
+        }
+        System.out.println("Резюме " + r.getUuid() +
+                " не может быть обновлено, так как отсутствует в базе");
     }
 }
