@@ -64,14 +64,12 @@ public class ArrayStorage {
     }
 
     public void update(Resume r) {
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid().equals(r.getUuid())) {
-                storage[i] = r;
-                return;
-            }
+        if (getIndex(r.getUuid()) < 0) {
+            System.out.println("Резюме " + r.getUuid() +
+                    " не может быть обновлено, так как отсутствует в базе");
+            return;
         }
-        System.out.println("Резюме " + r.getUuid() +
-                " не может быть обновлено, так как отсутствует в базе");
+        storage[getIndex(r.getUuid())] = r;
     }
 
     public int getIndex(String uuid) {
