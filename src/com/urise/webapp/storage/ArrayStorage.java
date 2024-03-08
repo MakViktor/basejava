@@ -31,10 +31,11 @@ public class ArrayStorage {
     }
 
     public Resume get(String uuid) {
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid().equals(uuid)) return storage[i];
+        if (getIndex(uuid) < 0) {
+            System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
+            return null;
         }
-        return null;
+        return storage[getIndex(uuid)];
     }
 
     public void delete(String uuid) {
