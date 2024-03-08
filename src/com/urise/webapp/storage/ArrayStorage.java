@@ -25,6 +25,8 @@ public class ArrayStorage {
                     " уже имеется в базе.");
             return;
         }
+        if (size == storage.length)
+            System.out.println("Нет возможности добавить резюме. База заполнена.");
         storage[size++] = r;
     }
 
