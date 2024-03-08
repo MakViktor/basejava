@@ -39,13 +39,12 @@ public class ArrayStorage {
     }
 
     public void delete(String uuid) {
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid().equals(uuid)) {
-                storage[i] = storage[--size];
-                storage[size] = null;
-                break;
-            }
+        if (getIndex(uuid) < 0) {
+            System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
+            return;
         }
+        storage[getIndex(uuid)] = storage[--size];
+        storage[size] = null;
     }
 
     /**
