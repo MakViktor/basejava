@@ -20,8 +20,10 @@ public class ArrayStorage {
     }
 
     public void save(Resume r) {
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid().equals(r.getUuid())) return;
+        if (getIndex(r.getUuid()) >= 0) {
+            System.out.println("Резюме с uuid: " + r.getUuid() +
+                    " уже имеется в базе.");
+            return;
         }
         storage[size++] = r;
     }
