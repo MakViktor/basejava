@@ -12,9 +12,6 @@ public class ArrayStorage {
     private int size = 0;
 
     public void clear() {
-//        while (size > 0) {
-//            storage[--size] = null;
-//        }
         Arrays.fill(storage, 0, size - 1, null);
         size = 0;
     }
@@ -51,11 +48,6 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     public Resume[] getAll() {
-//        Resume[] allResume = new Resume[size];
-//        for (int i = 0; i < allResume.length; i++) {
-//            allResume[i] = storage[i];
-//        }
-//        allResume;
         return Arrays.copyOf(storage, size);
     }
 
