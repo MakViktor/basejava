@@ -18,14 +18,13 @@ public class ArrayStorage {
     }
 
     public void save(Resume r) {
-        if (getIndex(r.getUuid()) >= 0) {
-            System.out.println("Резюме с uuid: " + r.getUuid() +
-                    " уже имеется в базе.");
-            return;
-        }
-        if (size == storage.length)
+        if (size == STORAGE_LIMIT) {
             System.out.println("Нет возможности добавить резюме. База заполнена.");
-        storage[size++] = r;
+        } else if (getIndex(r.getUuid()) >= 0) {
+            System.out.println("Резюме с uuid: " + r.getUuid() + " уже имеется в базе.");
+        } else {
+            storage[size++] = r;
+        }
     }
 
     public Resume get(String uuid) {
