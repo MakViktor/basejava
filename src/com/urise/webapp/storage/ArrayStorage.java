@@ -37,11 +37,12 @@ public class ArrayStorage {
     }
 
     public void delete(String uuid) {
-        if (getIndex(uuid) < 0) {
+        int index = getIndex(uuid);
+        if (index < 0) {
             System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
             return;
         }
-        storage[getIndex(uuid)] = storage[--size];
+        storage[index] = storage[--size];
         storage[size] = null;
     }
 
@@ -57,12 +58,13 @@ public class ArrayStorage {
     }
 
     public void update(Resume r) {
-        if (getIndex(r.getUuid()) < 0) {
+        int index = getIndex(r.getUuid());
+        if (index < 0) {
             System.out.println("Резюме " + r.getUuid() +
                     " не может быть обновлено, так как отсутствует в базе");
             return;
         }
-        storage[getIndex(r.getUuid())] = r;
+        storage[index] = r;
     }
 
     public int getIndex(String uuid) {
