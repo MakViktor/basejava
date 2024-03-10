@@ -28,11 +28,12 @@ public class ArrayStorage {
     }
 
     public Resume get(String uuid) {
-        if (getIndex(uuid) < 0) {
+        int index = getIndex(uuid);
+        if (index < 0) {
             System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
             return null;
         }
-        return storage[getIndex(uuid)];
+        return storage[index];
     }
 
     public void delete(String uuid) {
