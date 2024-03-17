@@ -17,16 +17,24 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         } else if (index >= 0) {
             System.out.println("Резюме с uuid: " + r.getUuid() + " уже имеется в базе.");
         } else if (-index - 1 < size) {
-            System.arraycopy(storage, -index - 1, storage, -index, size - index + 1);
-//            for (int i = size; i >= -index; i--) {
-//                storage[i] = storage[i - 1];
-//            }
+            System.arraycopy(storage, -index - 1, storage, -index, size + index + 1);
             storage[-index - 1] = r;
             size++;
         } else {
             storage[-index - 1] = r;
             size++;
         }
+    }
+
+    public void delete(String uuid) {
+        int index = getIndex(uuid);
+        if (index < 0) {
+            System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
+            return;
+        }
+        System.arraycopy(storage, index + 1, storage, index, size - index);
+        storage[size] = null;
+        size--;
     }
 
     @Override
