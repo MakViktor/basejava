@@ -34,9 +34,7 @@ public abstract class AbstractArrayStorage implements Storage {
             showErrorMessage(uuid);
             return;
         }
-        size--;
-        storage[index] = storage[size];
-        storage[size] = null;
+        removeElement(index);
     }
 
     /**
@@ -66,5 +64,5 @@ public abstract class AbstractArrayStorage implements Storage {
         System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
     }
 
-
+    protected abstract void removeElement(int index);
 }

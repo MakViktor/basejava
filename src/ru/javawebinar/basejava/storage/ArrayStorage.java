@@ -26,4 +26,11 @@ public class ArrayStorage extends AbstractArrayStorage {
         }
         return -1;
     }
+
+    @Override
+    protected void removeElement(int index) {
+        size--;
+        storage[index] = storage[size];
+        storage[size] = null;
+    }
 }

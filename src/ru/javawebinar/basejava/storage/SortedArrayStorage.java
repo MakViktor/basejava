@@ -26,17 +26,6 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         }
     }
 
-//    public void delete(String uuid) {
-//        int index = getIndex(uuid);
-//        if (index < 0) {
-//            System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
-//            return;
-//        }
-//        System.arraycopy(storage, index + 1, storage, index, size - index);
-//        storage[size] = null;
-//        size--;
-//    }
-
     @Override
     protected int getIndex(String uuid) {
         Resume searchKey = new Resume();
@@ -44,6 +33,10 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }
 
-    //System.arraycopy(storage, index + 1, storage, index, size - index);
+    @Override
+    protected void removeElement(int index) {
+        System.arraycopy(storage, index + 1, storage, index, size - index);
+        size--;
+    }
 
 }
