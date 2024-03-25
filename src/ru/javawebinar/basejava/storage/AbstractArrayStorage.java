@@ -19,22 +19,23 @@ public abstract class AbstractArrayStorage implements Storage {
         size = 0;
     }
 
-    public Resume get(String uuid) {
+    public final Resume get(String uuid) {
         int index = getIndex(uuid);
         if (index < 0) {
-            System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
+            showErrorMessage(uuid);
             return null;
         }
         return storage[index];
     }
 
-    public void delete(String uuid) {
+    public final void delete(String uuid) {
         int index = getIndex(uuid);
         if (index < 0) {
-            System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
+            showErrorMessage(uuid);
             return;
         }
-        storage[index] = storage[--size];
+        size--;
+        storage[index] = storage[size];
         storage[size] = null;
     }
 
@@ -50,15 +51,20 @@ public abstract class AbstractArrayStorage implements Storage {
         return size;
     }
 
-    public void update(Resume r) {
+    public final void update(Resume r) {
         int index = getIndex(r.getUuid());
         if (index < 0) {
-            System.out.println("Резюме " + r.getUuid() +
-                    " не может быть обновлено, так как отсутствует в базе");
+            showErrorMessage(r.getUuid());
             return;
         }
         storage[index] = r;
     }
 
     protected abstract int getIndex(String uuid);
+
+    private void showErrorMessage(String uuid) {
+        System.out.println("Резюме с uuid: " + uuid + " отсутствует в базе.");
+    }
+
+
 }
